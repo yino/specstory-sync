@@ -1,0 +1,15 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "npm",
+			"script": "compile",
+			"path": "./",
+			"problemMatcher": [
+				"$tsc"
+			],
+			"label": "npm: compile - specstory-sync",
+			"detail": "tsc -p ./"
+		}
+	]
+} 
