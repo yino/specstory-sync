@@ -1,0 +1,70 @@
+{
+  "name": "specstory-sync",
+  "displayName": "File Change Monitor",
+  "description": "Monitor file content changes in specific folders and show notifications",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.101.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "*"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "configuration": {
+      "title": "File Change Monitor",
+      "properties": {
+        "specstory-sync.watchedFolder": {
+          "type": "string",
+          "default": "src",
+          "description": "要监听的文件夹路径（相对于工作区根目录）"
+        }
+      }
+    },
+    "commands": [
+      {
+        "command": "specstory-sync.helloWorld",
+        "title": "Hello World"
+      },
+      {
+        "command": "specstory-sync.clearCache",
+        "title": "Clear File Cache"
+      },
+      {
+        "command": "specstory-sync.showCacheStatus",
+        "title": "Show Cache Status"
+      },
+      {
+        "command": "specstory-sync.setWatchedFolder",
+        "title": "Set Watched Folder"
+      },
+      {
+        "command": "specstory-sync.showWatchedFolder",
+        "title": "Show Current Watched Folder"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run esbuild-base -- --minify",
+    "esbuild-base": "esbuild ./src/extension.ts --bundle --outfile=out/extension.js --external:vscode --format=cjs --platform=node",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.101.0",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "20.x",
+    "@typescript-eslint/eslint-plugin": "^8.31.1",
+    "@typescript-eslint/parser": "^8.31.1",
+    "eslint": "^9.25.1",
+    "typescript": "^5.8.3",
+    "@vscode/test-cli": "^0.0.10",
+    "@vscode/test-electron": "^2.5.2"
+  }
+}
